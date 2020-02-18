@@ -57,6 +57,12 @@ Here are some useful commands for vim:
 - Usages `<leader>n` (shows all the usages of a name)
 - Open module, e.g. `:Pyimport os` (opens the os module)
 
+### Future work
+
+For now only `pip` is supported as a package manager.
+
+The implementation is ad-hoc and the setup is very manually. In the future, the shell.nix could install all dependencies (direnv, vim, etc)
+
 ### Credit
 
 The configuration started from a post on reddit: https://www.reddit.com/r/NixOS/comments/f4fvqp/nix_and_python/

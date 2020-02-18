@@ -6,6 +6,8 @@ This project explains how to set up Nix + Python + Vim for python development wi
 - Code audit
 - Offline documentation
 
+![screenshot](./img/screenshot_1.png)
+
 ### Requirements
 
 - git

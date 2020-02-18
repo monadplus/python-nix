@@ -23,8 +23,8 @@ This project explains how to set up Nix + Python + Vim for python development wi
 
 ### Installation
 
-1. Add jedi-vim, YouCompleteMe, and syntastic to your vim plugins (I use home-manager but you can do it manually).
-2. Add the following line to .vimrc to prevent jedi-vim to autocomplete (jedi-vim doesn't work on big dependencies such as pandas):
+1. Add direnv-vim, jedi-vim, YouCompleteMe, and syntastic to your vim plugins (I use home-manager but you can do it manually).
+2. Add the following line to .vimrc to prevent jedi-vim to autocomplete (jedi-vim doesn't work well on big dependencies such as pandas):
 
 ```
 let g:jedi#completions_enabled = 0
@@ -33,7 +33,9 @@ let g:jedi#completions_enabled = 0
 3. Install direnv in NixOS (on zsh you need to add the following line `eval "$(direnv hook zsh)"` to `.zshrc`).
 4. Clone the template https://github.com/monadplus/python-template-nix and extract all files (you can delete the README).
 5. `$ allow direnv .` which should trigger your .envrc configuration.
-6. Open vim and enjoy (auto-complete takes longer the first time)
+6. Open vim and enjoy\*
+
+\*Auto-complete takes longer the first time, so you will need to wait ~30 seconds before it works (it is asynchronous so you can write in the meanwhile).
 
 ### How it works
 

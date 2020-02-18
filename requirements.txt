@@ -1,2 +1,3 @@
 python-language-server
 flake8
+jedi

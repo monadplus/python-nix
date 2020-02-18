@@ -13,9 +13,11 @@ This project explains how to set up Nix + Python + Vim for python development wi
 - nix
 - direnv (latest version with use_nix in the stdlib)
 - LSP for Python (python-language-server)
-- Vim plugins: jedi-vim, YouCompleteMe, syntastic
-- https://github.com/monadplus/python-template-nix
-
+- Vim plugins:
+  - direnv-vim
+  - jedi-vim: offline docs / go to definition
+  - YouCompleteMe: autocomplete
+  - syntastic: linting
 
 ### Installation
 

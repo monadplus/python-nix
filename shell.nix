@@ -1,33 +1,30 @@
-# Pulling from a non-pinned unstable version.
-let unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
-    pkgs = import unstableTarball {};
-in
-  pkgs.mkShell rec {
-    name = "impure-python-venv";
+{ pkgs ? import <nixpkgs> {}}:
 
-    # Required by venvShellHook script
-    venvDir = "./.venv";
+pkgs.mkShell rec {
+  name = "impure-python-venv";
 
-    # build-time dependencies
-    buildInputs = [
-      # Includes pip and tkinter
-      pkgs.python37Full
-      # Triggers the .venv after entering the shell.
-      pkgs.python37Packages.venvShellHook
-    ];
+  # Required by venvShellHook script
+  venvDir = "./.venv";
 
-    # Runtime dependencies
-    propagatedBuildInputs = [
-      # This contains most of the .so for building python libraries such as pandas
-      pkgs.pythonManylinuxPackages.manylinux2014Package
-      pkgs.python37Packages.tkinter
-    ];
+  # build-time dependencies
+  buildInputs = [
+    # Includes pip and tkinter
+    pkgs.python37Full
+    # Triggers the .venv after entering the shell.
+    pkgs.python37Packages.venvShellHook
+  ];
 
-    # Add .so to the linker path
-    LD_LIBRARY_PATH = "${pkgs.pythonManylinuxPackages.manylinux2014Package}/lib";
+  # Runtime dependencies
+  propagatedBuildInputs = [
+    # This contains most of the .so for building python libraries such as pandas
+    pkgs.pythonManylinuxPackages.manylinux2014Package
+    pkgs.python37Packages.tkinter
+  ];
 
-    postShellHook = ''
-      pip install -r requirements.txt
-    '';
+  # Add .so to the linker path
+  LD_LIBRARY_PATH = "/run/opengl-driver/lib:${pkgs.pythonManylinuxPackages.manylinux2014Package}/lib";
 
-  }
+  postShellHook = ''
+    pip install -r requirements.txt
+  '';
+}
